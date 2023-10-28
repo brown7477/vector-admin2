@@ -1,0 +1,21 @@
+{
+  "name": "vector-data-management-system",
+  "version": "0.0.2",
+  "description": "A better way to manage vector data at scale for both businesses and developers via a normalized programmatic interface.",
+  "author": "Timothy Carambat (Mintplex Labs)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev:setup": "node devSetup.js && cd backend && yarn && cd ../frontend && yarn && cd ../workers && yarn",
+    "dev:server": "cd backend && yarn dev",
+    "dev:frontend": "cd frontend && yarn start",
+    "dev:workers": "cd workers && ./dev_entrypoint.sh",
+    "lint": "cd backend && yarn lint && cd ../frontend && yarn lint && cd ../workers && yarn lint",
+    "prisma:generate": "cd backend && npx prisma generate",
+    "prisma:migrate": "cd backend && npx prisma migrate dev --name init",
+    "prisma:setup": "yarn prisma:generate && yarn prisma:migrate"
+  },
+  "private": false
+}

@@ -1,0 +1,10 @@
+{
+  "cSpell.words": [
+    "Inngest",
+    "qdrant",
+    "Weaviate"
+  ],
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+}

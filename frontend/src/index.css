@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.dark-search::-webkit-search-cancel-button {
+  filter: grayscale(100%) invert(1) brightness(100) opacity(0.5);
+}
+
+.light-search::-webkit-search-cancel-button {
+  filter: grayscale(100%) invert(0) brightness(0) opacity(0.5);
+}
+
+dialog {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+dialog[open] {
+  opacity: 1;
+  pointer-events: inherit;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}

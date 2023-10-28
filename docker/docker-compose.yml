@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5433:5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: vectoradmin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: vdbms
+    
+  vector-admin:
+    container_name: vector-admin
+    image: vector-admin:latest
+    platform: linux/amd64
+    build:
+      context: ../.
+      dockerfile: ./docker/Dockerfile
+      args:
+        DATABASE_CONNECTION_STRING: ${DATABASE_CONNECTION_STRING}
+    ports:
+      - "3001:3001"
+      - "3355:3355"
+      - "8288:8288"
+    env_file:
+      - .env
+    depends_on:
+      - postgres
